@@ -13,8 +13,11 @@
   if (hasGSAP && typeof ScrollTrigger !== "undefined") gsap.registerPlugin(ScrollTrigger);
   if (hasGSAP && typeof DrawSVGPlugin !== "undefined") gsap.registerPlugin(DrawSVGPlugin);
 
+  // diagnostica: ?nolenis = scroll nativo (per isolare la causa della lentezza)
+  var noLenis = new URLSearchParams(location.search).has("nolenis");
+
   // Lenis + sync ScrollTrigger
-  if (!reduce && typeof Lenis !== "undefined") {
+  if (!reduce && !noLenis && typeof Lenis !== "undefined") {
     var lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.05 });
     if (typeof ScrollTrigger !== "undefined") lenis.on("scroll", ScrollTrigger.update);
     if (hasGSAP) {
