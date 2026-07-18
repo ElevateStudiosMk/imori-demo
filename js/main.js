@@ -15,7 +15,7 @@
 
   // Lenis + sync ScrollTrigger
   if (!reduce && typeof Lenis !== "undefined") {
-    var lenis = new Lenis({ lerp: 0.1 });
+    var lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.05 });
     if (typeof ScrollTrigger !== "undefined") lenis.on("scroll", ScrollTrigger.update);
     if (hasGSAP) {
       gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
@@ -66,7 +66,7 @@
     gsap.to(layer, {
       yPercent: depth * 100,
       ease: "none",
-      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 }
     });
   });
 
