@@ -35,6 +35,30 @@
     });
   }
 
+  // HERO — slideshow crossfade (indipendente da GSAP, rispetta reduced-motion)
+  var heroSlides = document.querySelectorAll(".hero__slide");
+  if (heroSlides.length > 1 && !reduce) {
+    var hs = 0;
+    setInterval(function () {
+      heroSlides[hs].classList.remove("is-active");
+      hs = (hs + 1) % heroSlides.length;
+      heroSlides[hs].classList.add("is-active");
+    }, 4800);
+  }
+
+  // DORMIRE — frecce del carosello (scroll orizzontale)
+  var roomsVp = document.querySelector(".rooms__viewport");
+  if (roomsVp) {
+    document.querySelectorAll(".rooms__btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var card = roomsVp.querySelector(".room");
+        var step = card ? card.getBoundingClientRect().width + 22 : 320;
+        var dir = btn.getAttribute("data-scroll") === "next" ? 1 : -1;
+        roomsVp.scrollBy({ left: dir * step, behavior: "smooth" });
+      });
+    });
+  }
+
   if (!hasGSAP || reduce) return; // contenuto gia visibile via CSS
 
   // HERO — split reveal mascherato
@@ -63,8 +87,8 @@
     }
   });
 
-  // parallax layer hero (cielo lento, colline medio, olivi veloce)
-  document.querySelectorAll(".hero__layer").forEach(function (layer) {
+  // parallax hero: il blocco slideshow scorre lento (la scala Ken Burns e' sui figli)
+  document.querySelectorAll(".hero__slides").forEach(function (layer) {
     var depth = parseFloat(layer.getAttribute("data-depth")) || 0.2;
     gsap.to(layer, {
       yPercent: depth * 100,
@@ -81,9 +105,9 @@
     });
   });
 
-  // sezione notte — leggero scale in
-  gsap.from(".cucina__inner", {
-    scale: 0.96, opacity: 0, duration: 1.2, ease: EASE,
-    scrollTrigger: { trigger: ".cucina", start: "top 70%", once: true }
+  // sezione notte (wellness) — leggero scale in
+  gsap.from(".wellness__grid", {
+    scale: 0.97, opacity: 0, duration: 1.2, ease: EASE,
+    scrollTrigger: { trigger: "#wellness", start: "top 70%", once: true }
   });
 })();

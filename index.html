@@ -15,8 +15,8 @@
     <a class="nav__brand" href="#top">I&nbsp;MORI</a>
     <nav class="nav__links">
       <a href="#storia" data-link>Storia</a>
-      <a href="#esperienza" data-link>Esperienza</a>
-      <a href="#cucina" data-link>Cucina</a>
+      <a href="#ristorante" data-link>Ristorante</a>
+      <a href="#wellness" data-link>Wellness</a>
       <a href="#dormire" data-link>Dormire</a>
       <a class="nav__cta" href="#prenota" data-link>Prenota</a>
     </nav>
@@ -24,9 +24,12 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero__layer hero__sky"   data-depth="0.10"></div>
-    <div class="hero__layer hero__hills" data-depth="0.28"></div>
-    <div class="hero__layer hero__olive" data-depth="0.55"></div>
+    <div class="hero__slides" data-depth="0.10">
+      <div class="hero__slide is-active" style="background-image:url(assets/hero-1.jpg)"></div>
+      <div class="hero__slide" style="background-image:url(assets/hero-2.jpg)"></div>
+      <div class="hero__slide" style="background-image:url(assets/hero-3.jpg)"></div>
+    </div>
+    <div class="hero__scrim"></div>
 
     <!-- ringhiera d'orizzonte in cotto — la firma -->
     <svg class="hero__railing" viewBox="0 0 1440 4" preserveAspectRatio="none" aria-hidden="true">
@@ -82,51 +85,153 @@
     </div>
   </section>
 
-  <!-- CUCINA — sezione notte -->
-  <section class="cucina" id="cucina">
-    <div class="cucina__inner">
-      <p class="kicker kicker--light" data-reveal>Cucina · km 0</p>
-      <h2 data-reveal>Tutto quello che mangi<br />nasce a pochi passi</h2>
+  <!-- RISTORANTE -->
+  <section class="feature" id="ristorante">
+    <div class="feature__text">
+      <p class="kicker" data-reveal>Il ristorante</p>
+      <h2 data-reveal>Si mangia quello<br />che nasce qui</h2>
       <p data-reveal>
-        Mezza pensione con colazione e cena preparate da Fabiola: pasta fatta
-        a mano, verdure dell'orto, olio e vino nostri. Cucina marchigiana vera,
-        genuina, a chilometro zero, riservata agli ospiti.
+        Mezza pensione con colazione e cena di Fabiola: pasta fatta a mano,
+        verdure dell'orto, olio e vino nostri. Cucina marchigiana bio, a
+        chilometro zero, riservata agli ospiti. Menù del giorno da circa 35 euro.
       </p>
-      <blockquote data-reveal>"Cucina genuina con prodotti dell'agriturismo e locali." (recensione ospite)</blockquote>
+      <blockquote data-reveal>“Cucina genuina con prodotti dell'agriturismo e locali.” — recensione ospite</blockquote>
+    </div>
+    <div class="feature__media">
+      <div class="feature__img" data-reveal style="background-image:url(assets/ristorante-esterno.jpg)"></div>
+      <div class="feature__img feature__img--small" data-reveal style="background-image:url(assets/ristorante-interno.jpg)"></div>
     </div>
   </section>
 
-  <!-- DORMIRE -->
-  <section class="dormire" id="dormire">
-    <p class="kicker" data-reveal>Dormire</p>
-    <h2 class="dormire__title" data-reveal>Nove camere e appartamenti<br />nel casale in pietra</h2>
-    <div class="rooms">
-      <article class="room" data-reveal>
-        <div class="room__img room__img--doppia"></div>
-        <div class="room__body">
-          <h3>Camera doppia “Olmo”</h3>
-          <p>20 m² · 2 ospiti · letto matrimoniale, bagno privato, aria condizionata, TV. Arredi d'epoca e il risveglio sulle colline.</p>
-          <p class="room__price"><span>da</span> €35 <em>a persona · con colazione</em></p>
-        </div>
-      </article>
-      <article class="room" data-reveal>
-        <div class="room__img room__img--mansarda"></div>
-        <div class="room__body">
-          <h3>Appartamento mansarda</h3>
-          <p>70 m² · 2–6 ospiti · angolo cottura, frigo, travi a vista e ingresso indipendente.</p>
-          <p class="room__price"><span>da</span> €400 <em>a settimana</em></p>
-        </div>
-      </article>
-      <article class="room" data-reveal>
-        <div class="room__img room__img--appartamento"></div>
-        <div class="room__body">
-          <h3>Appartamenti piano terra</h3>
-          <p>4–5 ospiti · angolo cottura, ingresso indipendente, accesso diretto al parco e alla piscina.</p>
-          <p class="room__price"><span>da</span> €400 <em>a settimana</em></p>
-        </div>
-      </article>
+  <!-- PISCINA & WELLNESS — sezione notte -->
+  <section class="section--dark" id="wellness">
+    <div class="wellness__grid">
+      <div class="wellness__text">
+        <p class="kicker kicker--light" data-reveal>Piscina &amp; wellness</p>
+        <h2 data-reveal>Il tempo rallenta<br />sul Balcone</h2>
+        <p data-reveal>
+          Piscina 6×12 con nuoto controcorrente, idromassaggio con cromoterapia,
+          area fitness, spa e camino. E davanti, sempre, le colline di Cingoli.
+        </p>
+      </div>
+      <div class="wellness__media">
+        <div class="wellness__img" data-reveal style="background-image:url(assets/piscina.jpg)"></div>
+        <div class="wellness__img" data-reveal style="background-image:url(assets/wellness.jpg)"></div>
+      </div>
     </div>
-    <p class="dormire__note" data-reveal>Mezza pensione con cucina bio inclusa da €65 a persona · acconto 30% alla prenotazione.</p>
+  </section>
+
+  <!-- DORMIRE — carosello -->
+  <section class="dormire" id="dormire">
+    <div class="dormire__head">
+      <div>
+        <p class="kicker" data-reveal>Dormire</p>
+        <h2 class="dormire__title" data-reveal>Nove camere e appartamenti<br />nel casale in pietra</h2>
+      </div>
+      <div class="rooms__nav" data-reveal>
+        <button class="rooms__btn" type="button" data-scroll="prev" aria-label="Sistemazioni precedenti">←</button>
+        <button class="rooms__btn" type="button" data-scroll="next" aria-label="Sistemazioni successive">→</button>
+      </div>
+    </div>
+
+    <div class="rooms__viewport" data-reveal>
+      <div class="rooms__track">
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/camera-doppia.jpg)"></div>
+          <div class="room__body">
+            <h3>Camera doppia “Olmo”</h3>
+            <p>20 m² · 2 ospiti · matrimoniale, bagno privato, aria condizionata, TV.</p>
+            <p class="room__price"><span>da</span> €35 <em>a persona</em></p>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/camera-matrimoniale.jpg)"></div>
+          <div class="room__body">
+            <h3>Camera matrimoniale</h3>
+            <p>2 ospiti · letto in ferro battuto, bagno privato, il risveglio sulle colline.</p>
+            <p class="room__price"><span>da</span> €35 <em>a persona</em></p>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/camera-familiare.jpg)"></div>
+          <div class="room__body">
+            <h3>Camera familiare</h3>
+            <p>Fino a 3 ospiti · spaziosa, arredi d'epoca, scrittoio e TV.</p>
+            <p class="room__price"><span>da</span> €35 <em>a persona</em></p>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/camera-mansarda.jpg)"></div>
+          <div class="room__body">
+            <h3>Appartamento mansarda</h3>
+            <p>70 m² · 2–6 ospiti · travi a vista, angolo cottura, ingresso indipendente.</p>
+            <p class="room__price"><span>da</span> €400 <em>a settimana</em></p>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/appartamento.jpg)"></div>
+          <div class="room__body">
+            <h3>Appartamento piano terra</h3>
+            <p>4–5 ospiti · angolo cottura, accesso diretto al parco e alla piscina.</p>
+            <p class="room__price"><span>da</span> €400 <em>a settimana</em></p>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room__img" style="background-image:url(assets/appartamento-cucina.jpg)"></div>
+          <div class="room__body">
+            <h3>Appartamento bilocale</h3>
+            <p>Cucina attrezzata, tavola conviviale e travi a vista: la casa in vacanza.</p>
+            <p class="room__price"><span>da</span> €400 <em>a settimana</em></p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="dormire__note" data-reveal>Trascina o usa le frecce per vedere tutte le sistemazioni · mezza pensione bio da €65 a persona · acconto 30%.</p>
+  </section>
+
+  <!-- AZIENDA BIO & DINTORNI -->
+  <section class="feature feature--reverse" id="dintorni">
+    <div class="feature__text">
+      <p class="kicker" data-reveal>Azienda bio &amp; dintorni</p>
+      <h2 data-reveal>5,5 ettari<br />e le Marche intorno</h2>
+      <p data-reveal>
+        Vigneto, olivi e gelsi secolari, orto certificato biologico: quello che
+        porti in tavola cresce a pochi passi.
+      </p>
+      <p data-reveal>
+        Fuori, Cingoli il “Balcone delle Marche” a 10 minuti, le Grotte di
+        Frasassi e la Gola del Furlo a un passo, il mare del Conero a 40 minuti.
+      </p>
+    </div>
+    <div class="feature__media">
+      <div class="feature__img" data-reveal style="background-image:url(assets/azienda.jpg)"></div>
+      <div class="feature__img feature__img--small" data-reveal style="background-image:url(assets/dintorni.jpg)"></div>
+    </div>
+  </section>
+
+  <!-- COME RAGGIUNGERCI -->
+  <section class="mappa" id="mappa">
+    <div class="mappa__text">
+      <p class="kicker" data-reveal>Come raggiungerci</p>
+      <h2 data-reveal>Via Pettovallone 1<br />Cingoli (MC)</h2>
+      <p data-reveal>
+        Sul Balcone delle Marche, a 10 minuti dal borgo di Cingoli e 40 dal mare
+        del Conero. Parcheggio e ricarica elettrica gratuiti in struttura.
+      </p>
+      <ul class="mappa__dist" data-reveal>
+        <li><span>10 min</span> Cingoli, borgo</li>
+        <li><span>28 km</span> Loreto</li>
+        <li><span>40 km</span> Grotte di Frasassi</li>
+        <li><span>37 km</span> Mare del Conero</li>
+      </ul>
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Agriturismo+I+Mori+Via+Pettovallone+1+Cingoli+MC" target="_blank" rel="noopener">Indicazioni stradali →</a>
+    </div>
+    <div class="mappa__map" data-reveal>
+      <iframe
+        title="Mappa Agriturismo I Mori, Cingoli"
+        src="https://maps.google.com/maps?q=Agriturismo%20I%20Mori%2C%20Via%20Pettovallone%201%2C%20Cingoli&amp;z=13&amp;output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
   </section>
 
   <!-- CTA -->

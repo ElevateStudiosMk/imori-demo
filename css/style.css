@@ -48,26 +48,13 @@ section{position:relative}
 
 /* HERO */
 .hero{height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;color:var(--calce)}
-.hero__layer{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
-.hero__sky{
-  inset:-8% 0 40% 0;
-  background:linear-gradient(180deg,#c9d3bd 0%,#e6ddc7 60%,#efe6d2 100%);
-}
-.hero__hills{
-  inset:30% 0 0 0;
-  background:
-    linear-gradient(180deg,rgba(46,58,34,0) 0%,rgba(46,58,34,.12) 65%,rgba(46,58,34,.45) 100%),
-    url(../assets/colline.jpg);
-  background-size:cover;background-position:center 60%;
-}
-.hero__olive{
-  inset:auto 0 0 0;height:34%;
-  background:
-    linear-gradient(180deg,rgba(26,28,21,0) 0%,rgba(26,28,21,.85) 100%),
-    radial-gradient(80% 120% at 20% 100%,#40502e 0%,#26301c 70%);
-}
-/* le foto reali del cliente si innestano qui senza toccare il layout:
-   .hero__hills{ background-image:linear-gradient(...),url(../assets/colline.jpg) } ecc. */
+.hero__slides{position:absolute;inset:-12% 0;overflow:hidden;will-change:transform}
+.hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 1.6s ease-in-out;transform:scale(1.03)}
+.hero__slide.is-active{opacity:1;animation:kenburns 7s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1.03)}to{transform:scale(1.13)}}
+.hero__scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(26,28,21,.32) 0%,rgba(26,28,21,0) 28%,rgba(26,28,21,.18) 58%,rgba(26,28,21,.74) 100%)}
 .hero__railing{position:absolute;left:0;top:56%;width:100%;height:4px;z-index:3}
 .hero__railing line,.prenota__railing line{stroke:var(--cotto);stroke-width:2}
 .hero__copy{position:relative;z-index:4;padding:0 var(--pad) clamp(2.5rem,7vh,5rem)}
@@ -106,31 +93,64 @@ section{position:relative}
 .exp:nth-child(2){transform:translateY(2.5rem)}
 @media(max-width:760px){.esperienza__grid{grid-template-columns:1fr}.exp:nth-child(2){transform:none}}
 
-/* CUCINA — notte */
-.cucina{background:var(--notte);color:var(--calce);padding:clamp(6rem,15vh,12rem) var(--pad)}
-.cucina__inner{max-width:820px;margin:0 auto;text-align:center}
-.cucina h2{font-size:clamp(2.2rem,5.5vw,4.6rem);margin-bottom:1.6rem}
-.cucina p{max-width:56ch;margin:0 auto;color:#d9d2c0}
-.cucina blockquote{margin-top:2.6rem;font-family:"Zodiak",serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--cotto)}
+/* FEATURE — ristorante, dintorni (foto + testo alternati) */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(5rem,12vh,10rem) var(--pad)}
+.feature--reverse .feature__media{order:-1}
+.feature__text h2{font-size:clamp(2rem,4.5vw,3.6rem);margin:.4rem 0 1.4rem}
+.feature__text p{color:#41502f;max-width:46ch;margin-bottom:1.1rem}
+.feature__text blockquote{font-family:"Zodiak",serif;font-style:italic;color:var(--cotto);font-size:clamp(1.05rem,1.7vw,1.35rem);margin-top:1.6rem;line-height:1.3}
+.feature__media{position:relative}
+.feature__img{aspect-ratio:4/3;background-size:cover;background-position:center;border-radius:2px;box-shadow:0 30px 60px -40px rgba(46,58,34,.5)}
+.feature__img--small{width:62%;margin:-18% 0 0 auto;border:7px solid var(--calce)}
+@media(max-width:820px){
+  .feature{grid-template-columns:1fr;gap:1.6rem}
+  .feature--reverse .feature__media{order:0}
+  .feature__img--small{width:70%;margin-top:-14%}
+}
 
-/* DORMIRE */
-.dormire{padding:clamp(5rem,12vh,10rem) var(--pad)}
-.dormire__title{font-size:clamp(1.8rem,4vw,3.2rem);margin:.4rem 0 2.8rem}
-.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
-.room{display:flex;flex-direction:column;background:#fbf7ee;border-radius:2px;overflow:hidden;
-  box-shadow:0 30px 60px -40px rgba(46,58,34,.5)}
+/* SECTION DARK — piscina & wellness (notte) */
+.section--dark{background:var(--notte);color:var(--calce);padding:clamp(6rem,14vh,11rem) var(--pad)}
+.wellness__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;max-width:1200px;margin:0 auto}
+.wellness__text h2{font-size:clamp(2rem,4.5vw,3.8rem);margin:.4rem 0 1.4rem}
+.wellness__text p{color:#d9d2c0;max-width:44ch}
+.wellness__media{display:grid;gap:1rem}
+.wellness__img{aspect-ratio:16/10;background-size:cover;background-position:center;border-radius:2px}
+@media(max-width:820px){.wellness__grid{grid-template-columns:1fr}}
+
+/* DORMIRE — carosello orizzontale */
+.dormire{padding:clamp(5rem,12vh,10rem) var(--pad);overflow:hidden}
+.dormire__head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:2.2rem}
+.dormire__title{font-size:clamp(1.8rem,4vw,3.2rem);margin:.4rem 0 0}
+.rooms__nav{display:flex;gap:.6rem;flex:0 0 auto}
+.rooms__btn{width:3rem;height:3rem;border-radius:50%;border:1px solid rgba(46,58,34,.35);background:transparent;color:var(--oliva);font-size:1.05rem;cursor:pointer;transition:background .3s,color .3s,transform .2s}
+.rooms__btn:hover{background:var(--oliva);color:var(--calce)}
+.rooms__btn:active{transform:scale(.94)}
+.rooms__viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  margin:0 calc(-1 * var(--pad));padding:0 var(--pad) .5rem;scroll-padding-left:var(--pad)}
+.rooms__viewport::-webkit-scrollbar{display:none}
+.rooms__track{display:flex;gap:1.4rem;width:max-content}
+.room{scroll-snap-align:start;flex:0 0 clamp(258px,30vw,340px);display:flex;flex-direction:column;
+  background:#fbf7ee;border-radius:2px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(46,58,34,.5)}
 .room__img{aspect-ratio:4/3;background-size:cover;background-position:center}
-.room__img--doppia{background-image:url(../assets/camera-doppia.jpg)}
-.room__img--mansarda{background-image:url(../assets/camera-mansarda.jpg)}
-.room__img--appartamento{background-image:url(../assets/appartamento.jpg)}
-.room__body{padding:1.6rem 1.5rem 1.8rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
-.room__body h3{font-size:clamp(1.3rem,2vw,1.7rem)}
-.room__body p{color:#5b6a45;font-size:.95rem;line-height:1.45}
-.room__price{margin-top:auto;font-family:"Zodiak",serif;font-size:1.5rem;color:var(--cotto)}
+.room__body{padding:1.5rem 1.4rem 1.7rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.room__body h3{font-size:clamp(1.25rem,1.8vw,1.6rem)}
+.room__body p{color:#5b6a45;font-size:.93rem;line-height:1.45}
+.room__price{margin-top:auto;font-family:"Zodiak",serif;font-size:1.45rem;color:var(--cotto)}
 .room__price span{font-family:"Switzer",sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--argento);margin-right:.35rem}
-.room__price em{display:block;font-style:normal;font-family:"Switzer",sans-serif;font-size:.74rem;letter-spacing:.03em;color:var(--argento);margin-top:.25rem}
-.dormire__note{text-align:center;margin-top:2.4rem;color:var(--argento);font-size:.92rem}
-@media(max-width:820px){.rooms{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+.room__price em{font-style:normal;font-family:"Switzer",sans-serif;font-size:.74rem;letter-spacing:.03em;color:var(--argento);margin-left:.15rem}
+.dormire__note{text-align:center;margin-top:2rem;color:var(--argento);font-size:.9rem}
+@media(max-width:680px){.rooms__btn{width:2.6rem;height:2.6rem}}
+
+/* COME RAGGIUNGERCI — mappa */
+.mappa{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;padding:clamp(5rem,12vh,10rem) var(--pad)}
+.mappa__text h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:.4rem 0 1.2rem}
+.mappa__text p{color:#41502f;max-width:44ch;margin-bottom:1.6rem}
+.mappa__dist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1.4rem;margin:0 0 2rem}
+.mappa__dist li{font-size:.95rem;color:#41502f;border-top:1px solid rgba(46,58,34,.18);padding-top:.5rem}
+.mappa__dist span{display:block;font-family:"Zodiak",serif;font-size:1.15rem;color:var(--cotto)}
+.mappa__map{position:relative;aspect-ratio:4/3;border-radius:2px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(46,58,34,.5)}
+.mappa__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.18) contrast(1.02)}
+@media(max-width:820px){.mappa{grid-template-columns:1fr}}
 
 /* PRENOTA */
 .prenota{padding:clamp(6rem,14vh,11rem) var(--pad) 3rem;text-align:center;overflow:hidden}
@@ -148,6 +168,6 @@ section{position:relative}
 :focus-visible{outline:2px solid var(--cotto);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important}
-  .hero__layer{position:absolute}
+  .hero__slide.is-active{opacity:1}
   [data-reveal]{opacity:1 !important;transform:none !important}
 }
